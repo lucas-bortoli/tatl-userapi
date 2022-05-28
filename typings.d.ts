@@ -14,13 +14,21 @@ export namespace Tatl {
         interface Window {
             readonly id: number,
             readonly ownerProcess: System.ProcessId,
-            title: string,
-            position: Utils.Geometry.Point,
-            size: Utils.Geometry.Size,
-            maximumSize: Utils.Geometry.Size,
-            minimumSize: Utils.Geometry.Size,
-            resizable: boolean,
-            state: WindowState,
+
+            getMaximumSize: () => Utils.Geometry.Size
+            setMaximumSize: (newSize: Utils.Geometry.Size) => void
+            getMinimumSize: () => Utils.Geometry.Size
+            setMinimumSize: (newSize: Utils.Geometry.Size) => void
+            getResizable: () => boolean,
+            setResizable: (isResizable: boolean) => void,
+            getState: () => WindowState,
+            setState: (newState: WindowState) => void,
+            getTitle: () => string,
+            setTitle: (newTitle: string) => void
+            getPosition: (newPosition: Utils.Geometry.Point) => void
+            setPosition: () => Utils.Geometry.Point
+            getSize: () => Utils.Geometry.Size
+            setSize: (newSize: Utils.Geometry.Size) => void
             getClientFrame: () => HTMLIFrameElement
             getRectangle: () => Utils.Geometry.Rectangle
         }
