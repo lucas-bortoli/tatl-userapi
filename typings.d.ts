@@ -9,7 +9,14 @@ export namespace Tatl {
 
     namespace Windows {
         type WindowState = 'Maximized'|'Minimized'|'Normal'
-        type WindowConstructProperties = Partial<Omit<Window, 'id'|'ownerProcess'|'getRectangle'>>
+        interface WindowConstructProperties {
+            position: Utils.Geometry.Point|'center',
+            size: Utils.Geometry.Size,
+            minimumSize: Utils.Geometry.Size,
+            maximumSize: Utils.Geometry.Size,
+            resizable: boolean
+            title: string
+        }
 
         interface Window {
             readonly id: number,
