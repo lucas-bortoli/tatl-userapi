@@ -70,6 +70,6 @@ export namespace Tatl {
 
 // Global APIs
 declare global {
-    const $OS: Tatl.GlobalAPIs.$OS
-    const $CurrentProc: Tatl.System.CurrentProcess
+    var $OS: Tatl.GlobalAPIs.$OS
+    var $CurrentProc: Tatl.System.CurrentProcess
 }
