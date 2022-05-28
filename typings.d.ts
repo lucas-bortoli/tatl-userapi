@@ -25,8 +25,8 @@ export namespace Tatl {
             setState: (newState: WindowState) => void,
             getTitle: () => string,
             setTitle: (newTitle: string) => void
-            getPosition: (newPosition: Utils.Geometry.Point|'center') => void
-            setPosition: () => Utils.Geometry.Point
+            getPosition: () => Utils.Geometry.Point
+            setPosition: (newPosition: Utils.Geometry.Point|'center') => void
             getSize: () => Utils.Geometry.Size
             setSize: (newSize: Utils.Geometry.Size) => void
             getClientFrame: () => HTMLIFrameElement
