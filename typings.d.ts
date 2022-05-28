@@ -45,14 +45,14 @@ export namespace Tatl {
         }
 
         interface CurrentProcess extends Process {
-            OnMessage?: (sender: Process, messageChannel: string, messageData) => void
+            OnMessage?: (sender: Process, messageChannel: string, messageData: object) => void
         }
 
         interface Core {
             processes: Process[],
             spawnProcess: (processArgs: Omit<Process, 'id'>) => Process,
-            killProcess: (procId, signal: number) => void,
-            sendProcessMessage: (sender: Process, target: Process, messageChannel: string, messageData: any) => void
+            killProcess: (procId: number, signal: number) => void,
+            sendProcessMessage: (sender: Process, target: Process, messageChannel: string, messageData: object) => void
         }
     }
 
