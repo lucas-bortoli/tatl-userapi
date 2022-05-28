@@ -51,7 +51,7 @@ export namespace Tatl {
         }
 
         interface Core {
-            processes: Process[],
+            processes: Map<ProcessId, Process>,
             spawnProcess: (processArgs: Omit<Process, 'id'>) => Process,
             killProcess: (target: ProcessId, signal: number) => void,
             sendProcessMessage: (sender: ProcessId, targetId: ProcessId, messageChannel: string, messageData: object) => void

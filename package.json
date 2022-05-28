@@ -1,6 +1,6 @@
 {
     "name": "@lucas-bortoli/tatl-userapi-types",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "author": "Lucas Bortoli",
     "files": [ "typings.d.ts" ]
 }
