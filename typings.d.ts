@@ -43,7 +43,7 @@ export namespace Tatl {
         interface WindowManager {
             windows: Map<number, Window>,
             createWindow(properties: WindowConstructProperties): Window
-            destroyWindow(): void
+            destroyWindow(windowId: number): void
         }
     }
 
