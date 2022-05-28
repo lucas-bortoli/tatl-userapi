@@ -55,13 +55,19 @@ export namespace Tatl {
             sendProcessMessage: (sender: Process, target: Process, messageChannel: string, messageData: any) => void
         }
     }
-}
 
-declare const $OS: {
-    Windows: { WindowManager: Tatl.Windows.WindowManager },
-    System: {
-        Core: Tatl.System.Core
+    namespace GlobalAPIs {
+        interface $OS {
+            Windows: { WindowManager: Windows.WindowManager },
+            System: { Core: System.Core }
+        }
+
+        type $CurrentProc = Tatl.System.CurrentProcess
     }
 }
 
-declare const $CurrentProc: Tatl.System.CurrentProcess
+// Global APIs
+declare global {
+    const $OS: Tatl.GlobalAPIs.$OS
+    const $CurrentProc: Tatl.System.CurrentProcess
+}
