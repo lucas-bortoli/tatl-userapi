@@ -42,7 +42,7 @@ export namespace Tatl {
 
         interface WindowManager {
             windows: Map<number, Window>,
-            createWindow(properties: WindowConstructProperties): Window
+            createWindow(ownerProcess: System.ProcessId, properties: WindowConstructProperties): Window
             destroyWindow(windowId: number): void
         }
     }
