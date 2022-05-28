@@ -3,7 +3,7 @@ export namespace Tatl {
         namespace Geometry {
             interface Point { x: number, y: number }
             interface Size { width: number, height: number }
-            type Rectangle = Point | Size
+            interface Rectangle { x: number, y: number, width: number, height: number }
         }
     }
 
