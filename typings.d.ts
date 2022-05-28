@@ -13,7 +13,7 @@ export namespace Tatl {
 
         interface Window {
             readonly id: number,
-            readonly ownerProcess: number,
+            readonly ownerProcess: System.ProcessId,
             title: string,
             position: Utils.Geometry.Point,
             size: Utils.Geometry.Size,
@@ -33,26 +33,28 @@ export namespace Tatl {
     }
 
     namespace System {
+        type ProcessId = number
+
         interface ProcessArgs {
             files?: string[]
         }
 
         interface Process {
-            readonly id: number,
+            readonly id: ProcessId,
             readonly sourceFile: string,
             cwd: string,
             args: ProcessArgs
         }
 
         interface CurrentProcess extends Process {
-            OnMessage?: (sender: Process, messageChannel: string, messageData: object) => void
+            OnMessage?: (sender: ProcessId, messageChannel: string, messageData: object) => void
         }
 
         interface Core {
             processes: Process[],
             spawnProcess: (processArgs: Omit<Process, 'id'>) => Process,
-            killProcess: (procId: number, signal: number) => void,
-            sendProcessMessage: (sender: Process, target: Process, messageChannel: string, messageData: object) => void
+            killProcess: (target: ProcessId, signal: number) => void,
+            sendProcessMessage: (sender: ProcessId, targetId: ProcessId, messageChannel: string, messageData: object) => void
         }
     }
 
