@@ -48,6 +48,17 @@ export namespace Tatl {
     }
 
     namespace System {
+        namespace SystemMessage {
+            interface Message {
+                id: string
+            }
+
+            interface WindowDestroyedMessage extends Message {
+                id: 'WindowDestroyed',
+                windowId: number
+            }
+        }
+
         type ProcessId = number
 
         interface ProcessArgs {
@@ -62,7 +73,8 @@ export namespace Tatl {
         }
 
         interface CurrentProcess extends Process {
-            OnMessage?: (sender: ProcessId, messageChannel: string, messageData: object) => void
+            OnMessage?: (sender: ProcessId, messageChannel: string, messageData: object) => void,
+            OnSystemMessage?: (message: SystemMessage.Message) => void
         }
 
         interface Core {
