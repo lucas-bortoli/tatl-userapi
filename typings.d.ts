@@ -72,4 +72,5 @@ export namespace Tatl {
 declare global {
     var $OS: Tatl.GlobalAPIs.$OS
     var $CurrentProc: Tatl.System.CurrentProcess
+    var $CurrentWindow: Tatl.Windows.Window|null
 }
