@@ -49,14 +49,12 @@ export namespace Tatl {
 
     namespace System {
         namespace SystemMessage {
-            interface Message {
-                id: string
-            }
-
-            interface WindowDestroyedMessage extends Message {
+            interface WindowDestroyedMessage {
                 id: 'WindowDestroyed',
                 windowId: number
             }
+
+            type Message = WindowDestroyedMessage
         }
 
         type ProcessId = number
