@@ -1,3 +1,5 @@
+import _ProgramManifest from "./programManifest"
+
 export namespace Tatl {
     namespace Utils {
         namespace Geometry {
@@ -48,6 +50,8 @@ export namespace Tatl {
     }
 
     namespace System {
+        type ProgramManifest = _ProgramManifest
+        
         namespace SystemMessage {
             interface WindowDestroyedMessage {
                 id: 'WindowDestroyed',
