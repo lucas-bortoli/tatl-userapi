@@ -1,4 +1,5 @@
 import _ProgramManifest from "./programManifest"
+import "./FileSystem"
 
 export namespace Tatl {
     namespace Utils {
@@ -87,6 +88,61 @@ export namespace Tatl {
         }
     }
 
+    namespace FileSystem {
+        type Hash = string
+        
+        interface IFile {
+            type: 'file',
+            name: string,
+            size: number
+        }
+    
+        interface IDirectory {
+            type: 'dir',
+            name: string,
+            children: (IFile | IDirectoryWithoutChildren)[]
+        }
+    
+        type IDirectoryWithoutChildren = Pick<IDirectory, 'type'|'name'>
+        type IEntry = IFile | IDirectory
+    
+    
+        type EACCESS = Error
+        type EADDRINUSE = Error
+        type ENOTSUP = Error
+        type EFBIG = Error
+        type EIO = Error
+        type EISDIR = Error
+        type EISFILE = Error
+        type EEXISTS = Error
+        type ENOENT = Error
+        type ENOSPC = Error
+        type ENOTEMPTY = Error
+    
+        interface IFileSystem {
+            readdir(target: string): Promise<IEntry[]>,
+    
+            read(target: string): Promise<ArrayBuffer>,
+            read(target: string, encoding: 'string-utf8'): Promise<string>,
+            read(target: string, encoding: 'data-uri'): Promise<string>,
+            read(target: string, encoding: 'blob'): Promise<Blob>,
+    
+            write(target: string, data: Blob): Promise<number>,
+    
+            cp(source: string, target: string): Promise<void>,
+    
+            mv(source: string, target: string): Promise<void>,
+    
+            mkdir(target: string): Promise<string>,
+    
+            del(target: string): Promise<void>,
+    
+            exists(target: string): Promise<boolean>,
+    
+            type(target: string): Promise<'dir'|'file'>
+        }
+    }
+
     namespace GlobalAPIs {
         interface $OS {
             Windows: { WindowManager: Windows.WindowManager },
@@ -102,4 +158,5 @@ declare global {
     var $OS: Tatl.GlobalAPIs.$OS
     var $CurrentProc: Tatl.System.CurrentProcess
     var $CurrentWindow: Tatl.Windows.Window|null
+    var $FS: Tatl.FileSystem.IFileSystem
 }
