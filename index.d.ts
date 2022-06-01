@@ -121,10 +121,7 @@ export namespace Tatl {
     
         interface IFileSystem {
             ls(target: string): Promise<(IFile | IDirectoryWithoutChildren)[]>,
-            get(target: string): Promise<ArrayBuffer>,
-            get(target: string, encoding: 'string-utf8'): Promise<string>,
-            get(target: string, encoding: 'data-uri'): Promise<string>,
-            get(target: string, encoding: 'blob'): Promise<Blob>,
+            get(target: string, encoding: 'blob'|'data-uri'|'utf8'): Promise<Blob|string|ArrayBuffer>,
             put(target: string, data: Blob): Promise<number>,
             cp(source: string, target: string): Promise<void>,
             mv(source: string, target: string): Promise<void>,
