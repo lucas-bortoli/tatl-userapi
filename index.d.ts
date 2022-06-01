@@ -127,7 +127,7 @@ export namespace Tatl {
             mv(source: string, target: string): Promise<void>,
             mkdir(target: string): Promise<string>,
             rm(target: string): Promise<void>,
-            access(target: string): Promise<IFile | IDirectory>
+            stat(target: string): Promise<IFile | IDirectory>
         }
     }
 
