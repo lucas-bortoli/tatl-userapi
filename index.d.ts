@@ -120,7 +120,7 @@ export namespace Tatl {
         type ENOTEMPTY = Error
     
         interface IFileSystem {
-            readdir(target: string): Promise<IEntry[]>,
+            readdir(target: string): Promise<(IFile | IDirectoryWithoutChildren)[]>,
     
             read(target: string): Promise<ArrayBuffer>,
             read(target: string, encoding: 'string-utf8'): Promise<string>,
