@@ -120,26 +120,17 @@ export namespace Tatl {
         type ENOTEMPTY = Error
     
         interface IFileSystem {
-            readdir(target: string): Promise<(IFile | IDirectoryWithoutChildren)[]>,
-    
-            read(target: string): Promise<ArrayBuffer>,
-            read(target: string, encoding: 'string-utf8'): Promise<string>,
-            read(target: string, encoding: 'data-uri'): Promise<string>,
-            read(target: string, encoding: 'blob'): Promise<Blob>,
-    
-            write(target: string, data: Blob): Promise<number>,
-    
+            ls(target: string): Promise<(IFile | IDirectoryWithoutChildren)[]>,
+            get(target: string): Promise<ArrayBuffer>,
+            get(target: string, encoding: 'string-utf8'): Promise<string>,
+            get(target: string, encoding: 'data-uri'): Promise<string>,
+            get(target: string, encoding: 'blob'): Promise<Blob>,
+            put(target: string, data: Blob): Promise<number>,
             cp(source: string, target: string): Promise<void>,
-    
             mv(source: string, target: string): Promise<void>,
-    
             mkdir(target: string): Promise<string>,
-    
-            del(target: string): Promise<void>,
-    
-            exists(target: string): Promise<boolean>,
-    
-            type(target: string): Promise<'dir'|'file'>
+            rm(target: string): Promise<void>,
+            access(target: string): Promise<IFile | IDirectory>
         }
     }
 
